@@ -1,9 +1,12 @@
 import requests
 from bs4 import BeautifulSoup as bs
+import os
+
+PORT = os.environ['PORT']
 
 
 def mfa_parse():
-    url = "https://france.mfa.gov.ua"
+    url = f"https://france.mfa.gov.ua:{PORT}"
     headers = {
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,'
                   'application/signed-exchange;v=b3;q=0.7',

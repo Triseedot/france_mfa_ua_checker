@@ -15,19 +15,21 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 
 CHANNEL_USERNAME = os.environ['CHANNEL_USERNAME']
 
+
 async def checker(wait_for):
-  while True:
-    await asyncio.sleep(wait_for)
-    file = open("last.txt", "r")
-    last = file.read()
-    curr = mfa_parse()
-    if curr['text'] != last:
-      file.close()
-      file = open("last.txt", "w")
-      file.write(curr['text'])
-      await bot.send_message(CHANNEL_USERNAME, f"{curr['text']}\n{curr['link']}")
-    file.close()
+    while True:
+        await asyncio.sleep(wait_for)
+        file = open("last.txt", "r")
+        last = file.read()
+        curr = mfa_parse()
+        if curr['text'] != last:
+            file.close()
+            file = open("last.txt", "w")
+            file.write(curr['text'])
+            await bot.send_message(CHANNEL_USERNAME, f"{curr['text']}\n{curr['link']}")
+        file.close()
+
 
 if __name__ == '__main__':
-  asyncio.ensure_future(checker(60))
-  executor.start_polling(dp, skip_updates=True)
+    asyncio.ensure_future(checker(60))
+    executor.start_polling(dp, skip_updates=True)

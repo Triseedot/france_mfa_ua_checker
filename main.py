@@ -31,5 +31,5 @@ async def checker(wait_for):
 
 
 if __name__ == '__main__':
-    asyncio.ensure_future(checker(60))
+    asyncio.ensure_future(checker(30))
     executor.start_polling(dp, skip_updates=True)

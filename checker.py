@@ -28,6 +28,7 @@ def mfa_parse():
     date = text_box.find("p", class_="slider_main__date").contents[0]
     link = url + text_box.find("a")['href']
     text = text_box.find("a").contents[0]
+    print(text)
     return ({
         "date": date,
         "link": link,

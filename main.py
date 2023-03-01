@@ -35,8 +35,11 @@ CHANNEL_USERNAME = os.environ['CHANNEL_USERNAME']
 
 
 async def checker(wait_for):
+    print('Inside checker func')
     while True:
+        print('Inside while')
         await asyncio.sleep(wait_for)
+        print('After sleep')
         file = open("last.txt", "r")
         last = file.read()
         curr = mfa_parse()

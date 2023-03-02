@@ -2,9 +2,12 @@ import requests
 from bs4 import BeautifulSoup as bs
 import os
 
+FIXIE_URL = os.environ['FIXIE_URL']
+if FIXIE_URL == '':
+    print("No fixie URL!")
 proxy_dict = {
-    "http": os.environ['FIXIE_URL'],
-    "https": os.environ['FIXIE_URL']
+    "http": FIXIE_URL,
+    "https": FIXIE_URL
 }
 
 

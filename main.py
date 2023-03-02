@@ -1,5 +1,6 @@
 from aiogram import Bot, executor
 from aiogram.dispatcher import Dispatcher
+from aiogram.types import Message
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import asyncio
 import logging
@@ -14,6 +15,11 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 CHANNEL_USERNAME = os.environ['CHANNEL_USERNAME']
 
 counter = 0
+
+
+@dp.message_handler(content_types=['text'])
+async def answer_command(message: Message):
+    await message.answer('Online')
 
 
 async def checker(wait_for):

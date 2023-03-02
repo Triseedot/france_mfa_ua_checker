@@ -2,12 +2,11 @@ import requests
 from bs4 import BeautifulSoup as bs
 import os
 
-FIXIE_URL = os.environ.get('FIXIE_URL', '')
-if FIXIE_URL == '':
-    print("No fixie URL!")
+proxy_url = os.environ['QUOTAGUARDSTATIC_URL']
+print("proxy:", proxy_url)
 proxy_dict = {
-    "http": FIXIE_URL,
-    "https": FIXIE_URL
+    "http": proxy_url,
+    "https": proxy_url
 }
 
 

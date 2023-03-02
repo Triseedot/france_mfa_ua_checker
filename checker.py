@@ -1,5 +1,11 @@
 import requests
 from bs4 import BeautifulSoup as bs
+import os
+
+proxy_dict = {
+    "http": os.environ['FIXIE_URL'],
+    "https": os.environ['FIXIE_URL']
+}
 
 
 def mfa_parse():
@@ -15,7 +21,7 @@ def mfa_parse():
         'sec-ch-ua-platform': '"Windows"'
     }
     for counter in range(10):
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, proxies=proxy_dict)
         if response.status_code == 200:
             break
     else:
